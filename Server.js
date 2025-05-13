@@ -4,9 +4,8 @@ const cors = require('cors');
 const Routes = require('./Router/EnquiryRoute');
 require('dotenv').config();
 
-// Initialize app
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; // InterServer sets this automatically
 
 // CORS config
 const allowedOrigins = [
@@ -29,20 +28,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-// Initialize DB connection
+// DB connection
 require('./Config/db');
 
 // Routes
 app.use('/api', Routes);
 
-// Start server with error handler
-app.listen(port, '0.0.0.0', () => {
-  console.log(`✅ Server running on http://0.0.0.0:${port}`);
-}).on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Port ${port} is already in use. Try a different one in your .env file.`);
-    process.exit(1);
-  } else {
-    console.error('❌ Server error:', err);
-  }
+// Start the server (host handled automatically)
+app.listen(port, () => {
+  console.log(`✅ Server running on assigned port ${port}`);
 });
