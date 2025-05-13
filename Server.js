@@ -6,7 +6,7 @@ require('dotenv').config();
 
 // Initialize app
 const app = express();
-const port = 3000;
+const port = 3306;
 
 // Initialize DB connection
 require('./Config/db');  // 👈 This ensures DB connects when server starts
@@ -20,5 +20,5 @@ app.use('/api', Routes);
 
 // Start server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`✅ Server running on http://192.168.29.33:${port}`);
+  console.log(`✅ Server running on http://174.138.185.18:${port}`);
 });
