@@ -5,7 +5,7 @@ const Routes = require('./Router/EnquiryRoute');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 3000; // InterServer sets this automatically
+const port = process.env.PORT || 3306; // InterServer sets this automatically
 
 // CORS config
 const allowedOrigins = [
